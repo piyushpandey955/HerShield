@@ -14,8 +14,54 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String buttonName = 'Help';
   String afterClickHelp = 'Click to get Help';
-  int currentIndex = 0;
+  int currentIndex = 1;
   Color buttonColor = Colors.red;
+
+  Widget buildHomeScreen() {
+  return Center(
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(
+          width: 200, // Adjust image width
+          height: 200, // Adjust image height
+          child: Image.asset('images/logo.jpg'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            // Handle button press
+            setState(() {
+              buttonName = 'Medical';
+              afterClickHelp = 'Click to get Medical Help';
+              buttonColor = Colors.orange;
+            });
+          },
+          style: ElevatedButton.styleFrom(
+            minimumSize: const Size(200, 200), // Adjust button size as needed
+            backgroundColor: buttonColor, // Change button background color to red
+            foregroundColor: Colors.white, // Change text color to white
+          ),
+          child: Text(
+            buttonName,
+            style: const TextStyle(fontSize: 20),
+          ),
+        ),
+        Text(
+          afterClickHelp,
+          style: const TextStyle(fontSize: 25),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget buildCommunityScreen() {
+  return SizedBox();
+}
+
+Widget buildProfileScreen() {
+  return Center();
+}
 
   @override
   Widget build(BuildContext context) {
@@ -32,48 +78,24 @@ class _MyAppState extends State<MyApp> {
           backgroundColor: Colors.blue,
         ),
         body: Center(
-          child: currentIndex == 0 ? Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 200, // Adjust image width
-                height: 200, // Adjust image height
-                child: Image.asset('images/logo.jpg'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Handle button press
-                  setState(() {
-                    buttonName = 'Medical';
-                    afterClickHelp = 'Click to get Medical Help';
-                    buttonColor = Colors.orange;
-                  });
-                },
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(200, 200), // Adjust button size as needed
-                  backgroundColor: buttonColor, // Change button background color to red
-                  foregroundColor: Colors.white, // Change text color to white
-                ),
-                child: Text(
-                  buttonName,
-                  style: const TextStyle(fontSize: 20),
-                ),
-              ),
-              Text(
-                afterClickHelp,
-                style: const TextStyle(fontSize: 25),
-              ),
-            ],
-          ) : const SizedBox(),
+          child: currentIndex == 1 ? buildHomeScreen() : currentIndex == 0 ? buildCommunityScreen() : buildProfileScreen(),
         ),
         bottomNavigationBar: BottomNavigationBar(
-          items: const [
+          items: [
+            BottomNavigationBarItem(
+              label: 'Community',
+              icon: SizedBox(
+                width: 30, // Adjust image width
+                height: 30, // Adjust image height
+                child: Image.asset('images/community-con.png'),
+              )
+            ),
             BottomNavigationBarItem(
               label: 'HOME',
               icon: Icon(Icons.home),
             ),
             BottomNavigationBarItem(
-              label: 'Person',
+              label: 'Profile',
               icon: Icon(Icons.person),
             )
           ],
