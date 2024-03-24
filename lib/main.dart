@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
         SizedBox(
           width: 200, // Adjust image width
           height: 200, // Adjust image height
-          child: Image.asset('images/logo.jpg'),
+          child: Image.asset('images/logo.png'),
         ),
         ElevatedButton(
           onPressed: () {
@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
             setState(() {
               buttonName = 'Medical';
               afterClickHelp = 'Click to get Medical Help';
-              buttonColor = Colors.orange;
+              buttonColor = Colors.blueAccent;
             });
           },
           style: ElevatedButton.styleFrom(
@@ -71,7 +71,7 @@ Widget buildProfileScreen() {
         appBar: AppBar(
           title: const Center(
             child: Text(
-              'Shield',
+              'HerShield',
               style: TextStyle(color: Colors.black),
             ),
           ),
@@ -83,20 +83,28 @@ Widget buildProfileScreen() {
         bottomNavigationBar: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(
-              label: 'Community',
+              label: 'Feed',
               icon: SizedBox(
                 width: 30, // Adjust image width
                 height: 30, // Adjust image height
-                child: Image.asset('images/community-con.png'),
+                child: Image.asset('images/community.png'),
               )
             ),
             BottomNavigationBarItem(
               label: 'HOME',
-              icon: Icon(Icons.home),
+              icon: SizedBox(
+                width: 30,
+                height: 30,
+                child: Image.asset("images/home.png"),
+              )
             ),
             BottomNavigationBarItem(
               label: 'Profile',
-              icon: Icon(Icons.person),
+              icon: SizedBox(
+              width: 30,
+              height: 30,
+              child: Image.asset("images/account.png"),
+            ),
             )
           ],
           currentIndex: currentIndex,
