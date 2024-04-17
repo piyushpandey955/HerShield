@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:newtry/widgets/add_post.dart';
+import 'package:newtry/widgets/post_card.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +16,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String buttonName = 'Help';
-  String afterClickHelp = 'Click to get Help';
+  String beforeClickHelp = 'Click to get Help';
   int currentIndex = 1;
   Color buttonColor = Colors.red;
 
@@ -32,7 +35,7 @@ class _MyAppState extends State<MyApp> {
             // Handle button press
             setState(() {
               buttonName = 'Medical';
-              afterClickHelp = 'Click to get Medical Help';
+              beforeClickHelp = 'Click to get Medical Help';
               buttonColor = Colors.blueAccent;
             });
           },
@@ -47,8 +50,8 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
         Text(
-          afterClickHelp,
-          style: const TextStyle(fontSize: 25),
+          beforeClickHelp,
+          style: const TextStyle(fontSize: 25, color: Colors.white),
         ),
       ],
     ),
@@ -56,33 +59,50 @@ class _MyAppState extends State<MyApp> {
 }
 
 Widget buildCommunityScreen() {
-  return SizedBox();
+  return Scaffold(
+    backgroundColor: Colors.black,
+    body: const PostCard(),
+  );
 }
 
 Widget buildProfileScreen() {
   return Center();
 }
 
+Widget buildAddPostScreen(){
+  return Scaffold(
+    backgroundColor: Colors.black,
+    body: const AddPost(),
+  );
+}
+
+Widget buildAreaProfilingScreen(){
+  return Center();
+}
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Center(
-            child: Text(
-              'HerShield',
-              style: TextStyle(color: Colors.black),
-            ),
-          ),
-          backgroundColor: Colors.blue,
-        ),
+        backgroundColor: Colors.black54,
+        // appBar: AppBar(
+        //   title: const Center(
+        //     child: Text(
+        //       'HerShield',
+        //       style: TextStyle(color: Colors.white),
+        //     ),
+        //   ),
+        //   backgroundColor: Colors.black,
+        // ),
         body: Center(
-          child: currentIndex == 1 ? buildHomeScreen() : currentIndex == 0 ? buildCommunityScreen() : buildProfileScreen(),
+          child: currentIndex == 2 ? buildHomeScreen() : currentIndex == 0 ? buildCommunityScreen() : currentIndex == 4 ? buildProfileScreen() : currentIndex == 1 ? buildAddPostScreen() : buildAreaProfilingScreen(),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(
+              backgroundColor: Colors.black,
               label: 'Feed',
               icon: SizedBox(
                 width: 30, // Adjust image width
@@ -91,6 +111,16 @@ Widget buildProfileScreen() {
               )
             ),
             BottomNavigationBarItem(
+              backgroundColor: Colors.black,
+              label: 'Add',
+              icon: SizedBox(
+                width: 30,
+                height: 30,
+                child: Image.asset("images/add_post.png"),
+              )
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: Colors.black,
               label: 'HOME',
               icon: SizedBox(
                 width: 30,
@@ -99,19 +129,31 @@ Widget buildProfileScreen() {
               )
             ),
             BottomNavigationBarItem(
+              backgroundColor: Colors.black,
+              label: 'Area',
+              icon: SizedBox(
+              width: 30,
+              height: 30,
+              child: Image.asset("images/area_profile.png"),
+            ),
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: Colors.black,
               label: 'Profile',
               icon: SizedBox(
               width: 30,
               height: 30,
               child: Image.asset("images/account.png"),
             ),
-            )
+            ),
           ],
+          
           currentIndex: currentIndex,
           onTap: (int index) {
             setState(() {
               currentIndex = index;
-            });
+            }
+            );
           },
         ),
       ),
