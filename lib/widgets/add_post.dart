@@ -2,7 +2,11 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:newtry/utils/utils.dart';
+import 'package:newtry/models/user.dart';
+import 'package:provider/provider.dart';
+import '../providers/user_provider.dart';
+import '../utils/utils.dart';
+
 
 class AddPost extends StatefulWidget {
   const AddPost({super.key});
@@ -13,6 +17,7 @@ class AddPost extends StatefulWidget {
 
 class _AddPostState extends State<AddPost> {
   Uint8List? _file;
+  final TextEditingController _descriptionController = TextEditingController();
 
   _selectImage(BuildContext context) async {
     return showDialog(
@@ -43,13 +48,29 @@ class _AddPostState extends State<AddPost> {
                   });
                 },
               ),
+              SimpleDialogOption(
+                padding: const EdgeInsets.all(20),
+                child: const Text('Cancel'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
             ],
           );
         });
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _descriptionController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    // final User user = Provider.of<UserProvider>(context).getUser;
+
     return _file == null
         ? Center(
             child: IconButton(
@@ -94,11 +115,14 @@ class _AddPostState extends State<AddPost> {
                   children: [
                     CircleAvatar(
                       backgroundImage: NetworkImage(
-                          'https://images.unsplash.com/photo-1703756883144-86f10d5cb6e4?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+                          'https://images.unsplash.com/photo-1703756883144-86f10d5cb6e4?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                          ),
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.45,
                       child: TextField(
+                        style: TextStyle(color:Colors.white),
+                        controller: _descriptionController,
                         decoration: const InputDecoration(
                           hintText: 'Write a caption...',
                           hintStyle: TextStyle(color: Colors.white),
@@ -115,8 +139,7 @@ class _AddPostState extends State<AddPost> {
                         child: Container(
                           decoration: BoxDecoration(
                               image: DecorationImage(
-                            image: NetworkImage(
-                                'https://images.unsplash.com/photo-1703756883144-86f10d5cb6e4?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+                            image: MemoryImage(_file!),
                             fit: BoxFit.fill,
                             alignment: FractionalOffset.topCenter,
                           )),

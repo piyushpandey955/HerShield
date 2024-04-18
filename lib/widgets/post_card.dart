@@ -25,7 +25,7 @@ class _PostCardState extends State<PostCard> {
                       'https://plus.unsplash.com/premium_photo-1713163890188-6807aa2641de?q=80&w=2160&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
                 ),
                 Expanded(
-                    child: Padding(
+                  child: Padding(
                   padding: const EdgeInsets.only(left: 8),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -174,11 +174,142 @@ class _PostCardState extends State<PostCard> {
                       ),
                     ),
                   ),
+                  
               ],
             ),
-          )
+          ),
+
+
+
+
+
+
+
+
+          // //IMAGE SECTION
+          // SizedBox(
+          //   height: MediaQuery.of(context).size.height * 0.35,
+          //   width: 360.0,
+          //   child: Image.network(
+          //     'https://images.unsplash.com/photo-1705646742193-d0ffd590193b?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+          //     fit: BoxFit.cover,
+          //   ),
+          // ),
+          // // like comment section
+          // Row(
+          //   children: [
+          //     IconButton(
+          //       onPressed: () {},
+          //       icon: const Icon(
+          //         Icons.favorite,
+          //         color: Colors.red,
+          //       ),
+          //     ),
+          //     IconButton(
+          //       onPressed: () {},
+          //       icon: const Icon(
+          //         Icons.comment_outlined,
+          //         color: Colors.white70,
+          //       ),
+          //     ),
+          //     IconButton(
+          //       onPressed: () {},
+          //       icon: const Icon(
+          //         Icons.send,
+          //         color: Colors.white70,
+          //       ),
+          //     ),
+          //     Expanded(
+          //       child: Align(
+          //         alignment: Alignment.bottomRight,
+          //         child: IconButton(
+          //           icon: const Icon(Icons.bookmark_border , color: Colors.white70,),
+          //           onPressed: () {},
+          //         ),
+          //       ),
+          //     )
+          //   ],
+          // ),
+
+
+
+
+
+          // Container(
+          //   padding: const EdgeInsets.symmetric(horizontal: 16),
+          //   child: Column(
+          //     mainAxisSize: MainAxisSize.min,
+          //     crossAxisAlignment: CrossAxisAlignment.start,
+          //     children: [
+          //       DefaultTextStyle(
+          //         style: Theme.of(context).textTheme.titleSmall!.copyWith(
+          //               fontWeight: FontWeight.w800,
+          //             ),
+          //         child: Text(
+          //           '1,231 likes',
+          //           style: Theme.of(context).textTheme.bodyMedium,
+
+          //         ),
+          //       ),
+          //       Container(
+          //         width: double.infinity,
+          //         padding: const EdgeInsets.only(
+          //           top: 8,
+          //         ),
+          //         child: RichText(
+          //           text: TextSpan(
+          //             style: const TextStyle(
+          //                 color: Colors.white70),
+          //             children: [
+          //               TextSpan(
+          //                 text: 'username ',
+          //                 style: const TextStyle(fontWeight: FontWeight.bold),
+          //               ),
+          //               TextSpan(
+          //                 text: 'Hey this is some description',
+          //                 style: const TextStyle(fontWeight: FontWeight.bold),
+          //               ),
+          //             ],
+          //           ),
+          //         ),
+          //       ),
+          //       InkWell(
+          //         onTap: () {},
+          //         child: Container(
+          //           padding: const EdgeInsets.symmetric(vertical: 4),
+          //           child: Text(
+          //             "View all 200 comments",
+          //             style: const TextStyle(
+          //               fontSize: 16,
+          //               color: Colors.white60,
+          //             ),
+          //           ),
+          //         ),
+          //       ),
+
+          //       Container(
+          //           padding: const EdgeInsets.symmetric(vertical: 4),
+          //           child: Text(
+          //             "17/04/2024",
+          //             style: const TextStyle(
+          //               fontSize: 16,
+          //               color: Colors.white54,
+          //             ),
+          //           ),
+          //         ),
+                  
+          //     ],
+          //   ),
+          // ),
+
+
+
+          
         ],
       ),
+      
     );
   }
 }
+
+

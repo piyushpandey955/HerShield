@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:newtry/widgets/add_post.dart';
 import 'package:newtry/widgets/post_card.dart';
+import 'package:newtry/widgets/profile.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,7 +29,7 @@ class _MyAppState extends State<MyApp> {
         SizedBox(
           width: 200, // Adjust image width
           height: 200, // Adjust image height
-          child: Image.asset('images/logo.png'),
+          child: Image.asset('images/bglogo.png'),
         ),
         ElevatedButton(
           onPressed: () {
@@ -60,18 +61,38 @@ class _MyAppState extends State<MyApp> {
 
 Widget buildCommunityScreen() {
   return Scaffold(
-    backgroundColor: Colors.black,
+    backgroundColor: Colors.black12,
+    // appBar: AppBar(
+    //       title: const Center(
+    //         child: Text(
+    //           'HerShield',
+    //           style: TextStyle(color: Colors.white),
+    //         ),
+    //       ),
+    //       backgroundColor: Colors.black,
+    //     ),
     body: const PostCard(),
   );
 }
 
 Widget buildProfileScreen() {
-  return Center();
+  return Scaffold(
+    body: const ProfileScreen(),
+  );
 }
 
 Widget buildAddPostScreen(){
   return Scaffold(
-    backgroundColor: Colors.black,
+    // appBar: AppBar(
+    //       title: const Center(
+    //         child: Text(
+    //           'HerShield',
+    //           style: TextStyle(color: Colors.white),
+    //         ),
+    //       ),
+    //       backgroundColor: Colors.black45,
+    //     ),
+    backgroundColor: Colors.black45,
     body: const AddPost(),
   );
 }
@@ -87,15 +108,15 @@ Widget buildAreaProfilingScreen(){
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.black54,
-        // appBar: AppBar(
-        //   title: const Center(
-        //     child: Text(
-        //       'HerShield',
-        //       style: TextStyle(color: Colors.white),
-        //     ),
-        //   ),
-        //   backgroundColor: Colors.black,
-        // ),
+        appBar: AppBar(
+          title: const Center(
+            child: Text(
+              'HerShield',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          backgroundColor: Colors.black,
+        ),
         body: Center(
           child: currentIndex == 2 ? buildHomeScreen() : currentIndex == 0 ? buildCommunityScreen() : currentIndex == 4 ? buildProfileScreen() : currentIndex == 1 ? buildAddPostScreen() : buildAreaProfilingScreen(),
         ),
